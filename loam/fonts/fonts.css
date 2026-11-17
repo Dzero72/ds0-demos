@@ -1,0 +1,5 @@
+/* Fonts bundled with this template. All are open-licence (SIL OFL 1.1); see the licence files in this folder.
+   They load from this folder, so the site makes no requests to Google. */
+@font-face{font-family:'Cormorant Garamond';src:url('CormorantGaramond.woff') format('woff');font-weight:300 700;font-style:normal;font-display:swap}
+@font-face{font-family:'Cormorant Garamond';src:url('CormorantGaramond-Italic.woff') format('woff');font-weight:300 700;font-style:italic;font-display:swap}
+@font-face{font-family:'Karla';src:url('Karla.woff') format('woff');font-weight:200 800;font-style:normal;font-display:swap}

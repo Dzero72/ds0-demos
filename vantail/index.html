@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vantail — the deploy tool that stays out of your way</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<meta name="description" content="Landing page for a developer tool: terminal demo, six feature blocks, customer strip and a light/dark theme switch.">
+<meta name="theme-color" content="#09090B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2334D399'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%2309090B'%3EV%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vantail — the deploy tool that stays out of your way">
+<meta property="og:description" content="Landing page for a developer tool: terminal demo, six feature blocks, customer strip and a light/dark theme switch.">
+<!-- Social sharing image: add <meta property="og:image" content="https://your-domain.com/share.jpg"> (1200x630) -->
+</head>
+<body>
+<header class="bar"><a class="logo" href="#">◆ vantail</a><nav aria-label="Main"><a href="#features">Features</a><a href="#">Docs</a><a href="#">Pricing</a><a href="#">Changelog</a></nav><button id="theme" type="button" aria-label="Switch colour theme">◐</button><a class="btn" href="#">Get started</a></header>
+<main>
+  <section class="hero">
+    <a class="pill" href="#"><b>v3.0</b> Preview environments for every branch →</a>
+    <h1>Ship on a Friday.<br><span>Sleep on a Friday.</span></h1>
+    <p>Vantail turns a git push into a live URL in under a minute, with rollbacks that take one command.</p>
+    <p class="cta"><a class="btn" href="#">Start for free</a><code>npm i -g vantail-cli</code></p>
+    <div class="term" role="img" aria-label="Terminal showing a successful deploy">
+      <p class="dots"><i></i><i></i><i></i><span>~/my-site</span></p>
+<pre><b>$</b> vantail deploy
+<span class="d">→ Building</span>            <span class="g">done</span> 11.2s
+<span class="d">→ Running checks</span>      <span class="g">done</span> 4.0s
+<span class="d">→ Uploading 214 files</span> <span class="g">done</span> 2.7s
+
+<span class="g">✔ Live</span> at <u>https://my-site.example.app</u>
+<b>$</b> <i class="cur"></i></pre>
+    </div>
+  </section>
+  <section class="logos" aria-label="Used by"><span>Used by teams at</span><b>Northwind</b><b>Halcyon</b><b>Parcel &amp; Post</b><b>Quartz Labs</b><b>Tessera</b></section>
+  <section class="features" id="features">
+    <article><span>01</span><h2>Preview every branch</h2><p>Each pull request gets its own URL, so reviews happen on a real site.</p></article>
+    <article><span>02</span><h2>One-command rollback</h2><p><code>vantail rollback</code> puts the last good build back in seconds.</p></article>
+    <article><span>03</span><h2>Edge by default</h2><p>Your pages are served from the region nearest each visitor.</p></article>
+    <article><span>04</span><h2>Secrets that stay secret</h2><p>Encrypted environment variables, scoped per environment.</p></article>
+    <article><span>05</span><h2>Logs you can read</h2><p>Structured, searchable, and streamed live to your terminal.</p></article>
+    <article><span>06</span><h2>No config to start</h2><p>Vantail detects your framework. Add a file only when you need one.</p></article>
+  </section>
+  <section class="end"><h2>Your next deploy is 60 seconds away.</h2><a class="btn" href="#">Start for free</a></section>
+</main>
+<footer><span>© Vantail</span><a href="#">Status</a><a href="#">Privacy</a><a href="#">GitHub</a></footer>
+<style>.dsz-preview{position:fixed;right:12px;bottom:12px;z-index:99999;background:#111;color:#fff;font:600 12px/1 system-ui,sans-serif;padding:9px 13px;border-radius:99px;opacity:.88;pointer-events:none;letter-spacing:.02em;box-shadow:0 2px 10px rgba(0,0,0,.3)}</style><div class="dsz-preview" aria-hidden="true">Live preview &middot; DesignStudioZero</div>
+</body>
+</html>
