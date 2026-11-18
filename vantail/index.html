@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.replace('no-js','js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vantail — the deploy tool that stays out of your way</title>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <script src="script.js" defer></script>
-<meta name="description" content="Landing page for a developer tool: terminal demo, six feature blocks, customer strip and a light/dark theme switch.">
+<meta name="description" content="Vantail turns a git push into a live URL in under a minute, with one-command rollbacks.">
 <meta name="theme-color" content="#09090B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2334D399'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%2309090B'%3EV%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vantail — the deploy tool that stays out of your way">
-<meta property="og:description" content="Landing page for a developer tool: terminal demo, six feature blocks, customer strip and a light/dark theme switch.">
+<meta property="og:description" content="Vantail turns a git push into a live URL in under a minute, with one-command rollbacks.">
 <!-- Social sharing image: add <meta property="og:image" content="https://your-domain.com/share.jpg"> (1200x630) -->
 </head>
 <body>
-<header class="bar"><a class="logo" href="#">◆ vantail</a><nav aria-label="Main"><a href="#features">Features</a><a href="#">Docs</a><a href="#">Pricing</a><a href="#">Changelog</a></nav><button id="theme" type="button" aria-label="Switch colour theme">◐</button><a class="btn" href="#">Get started</a></header>
+<header class="bar">
+  <a class="logo" href="#"><span aria-hidden="true">◆</span> vantail</a>
+  <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+  <nav id="main-nav" aria-label="Main"><a href="#features">Features</a><a href="#">Docs</a><a href="#">Pricing</a><a href="#">Changelog</a></nav>
+  <button id="theme" type="button" aria-label="Switch colour theme"><span aria-hidden="true">◐</span></button>
+  <a class="btn" href="#">Get started</a>
+</header>
 <main>
   <section class="hero">
     <a class="pill" href="#"><b>v3.0</b> Preview environments for every branch →</a>
@@ -24,7 +31,7 @@
     <p>Vantail turns a git push into a live URL in under a minute, with rollbacks that take one command.</p>
     <p class="cta"><a class="btn" href="#">Start for free</a><code>npm i -g vantail-cli</code></p>
     <div class="term" role="img" aria-label="Terminal showing a successful deploy">
-      <p class="dots"><i></i><i></i><i></i><span>~/my-site</span></p>
+      <p class="dots" aria-hidden="true"><i></i><i></i><i></i><span>~/my-site</span></p>
 <pre><b>$</b> vantail deploy
 <span class="d">→ Building</span>            <span class="g">done</span> 11.2s
 <span class="d">→ Running checks</span>      <span class="g">done</span> 4.0s

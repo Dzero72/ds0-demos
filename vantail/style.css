@@ -1,36 +1,331 @@
-/* Base reset */
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0}
-img,svg{max-width:100%;display:block}
-a{color:inherit}
-button,input,select,textarea{font:inherit;color:inherit}
-button{cursor:pointer}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-:focus-visible{outline:3px solid var(--focus,currentColor);outline-offset:3px}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/*
+ * Vantail – Developer Tool Landing Page Template
+ * Version 1.0 · DesignStudioZero
+ *
+ * CONTENTS
+ *  1. Reset and base
+ *  2. Design tokens (colours, fonts) – edit these to rebrand
+ *  3. Typography and global elements
+ *  4. Header and navigation
+ *  5. Buttons
+ *  6. Hero
+ *  7. Terminal demo
+ *  8. Logo strip
+ *  9. Features grid
+ * 10. Closing call to action
+ * 11. Footer
+ * 12. Responsive
+ */
 
-:root{color-scheme:dark;--bg:#09090B;--panel:#111114;--ink:#FAFAFA;--muted:#A1A1AA;--line:#27272A;--accent:#34D399;--body:'Geist',system-ui,sans-serif;--mono:'Geist Mono',ui-monospace,monospace}
-:root[data-theme=light]{color-scheme:light;--bg:#FAFAFA;--panel:#fff;--ink:#09090B;--muted:#52525B;--line:#E4E4E7;--accent:#059669}
-@media (prefers-color-scheme:light){:root:not([data-theme]){color-scheme:light;--bg:#FAFAFA;--panel:#fff;--ink:#09090B;--muted:#52525B;--line:#E4E4E7;--accent:#059669}}
-body{font:1rem/1.55 var(--body);background:var(--bg);color:var(--ink);transition:background .3s,color .3s}
-a{text-decoration:none}code{font-family:var(--mono);font-size:.9em}
-.bar{display:flex;align-items:center;gap:1.5rem;padding:.9rem clamp(1rem,4vw,3rem);border-bottom:1px solid var(--line);position:sticky;top:0;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);z-index:2}
-.logo{font-weight:700;font-size:1.15rem}.bar nav{display:flex;gap:1.4rem;margin-right:auto;color:var(--muted);font-size:.92rem}.bar nav a:hover{color:var(--ink)}
-#theme{border:1px solid var(--line);background:none;border-radius:.5rem;width:2.2rem;height:2.2rem}
-.btn{display:inline-block;background:var(--ink);color:var(--bg);font-weight:500;padding:.55rem 1.1rem;border-radius:.5rem}.btn:hover{opacity:.85}
-.hero{max-width:60rem;margin:0 auto;padding:5rem 1rem 3rem;text-align:center;background:radial-gradient(50% 40% at 50% 0,color-mix(in srgb,var(--accent) 18%,transparent),transparent)}
-.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:.25rem .9rem .25rem .3rem;font-size:.85rem;color:var(--muted)}.pill b{background:var(--accent);color:#052E1F;border-radius:99px;padding:.05rem .5rem;margin-right:.3rem}
-h1{font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;letter-spacing:-.045em;margin:1.2rem 0 1rem}h1 span{color:var(--muted)}
-.hero>p{color:var(--muted);font-size:1.15rem;max-width:36rem;margin:0 auto}
-.cta{display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem!important}.cta code{border:1px solid var(--line);border-radius:.5rem;padding:.5rem 1rem;color:var(--ink)}
-.term{margin:3rem auto 0;max-width:42rem;text-align:left;background:#0C0C0E;color:#E4E4E7;border:1px solid #27272A;border-radius:.9rem;overflow:hidden;box-shadow:0 30px 80px rgb(0 0 0/.4),0 0 0 1px rgb(52 211 153/.08)}
-.dots{display:flex;gap:.4rem;align-items:center;margin:0;padding:.7rem 1rem;border-bottom:1px solid #27272A;font:400 .8rem var(--mono);color:#71717A}.dots i{width:.7rem;height:.7rem;border-radius:50%;background:#3F3F46}.dots span{margin-left:auto}
-pre{margin:0;padding:1.2rem;font:400 .9rem/1.7 var(--mono);overflow:auto}.d{color:#A1A1AA}.g{color:#34D399}pre b{color:#71717A}
-.cur{display:inline-block;width:.55em;height:1.1em;background:#34D399;vertical-align:text-bottom;animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}
-.logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:1rem 2.5rem;padding:2rem 1rem;color:var(--muted);border-block:1px solid var(--line)}.logos span{font-size:.85rem}.logos b{font-size:1.1rem;letter-spacing:-.02em}
-.features{display:grid;grid-template-columns:repeat(3,1fr);max-width:68rem;margin:4rem auto;border:1px solid var(--line);border-radius:1rem;overflow:hidden;background:var(--line);gap:1px}
-.features article{background:var(--panel);padding:1.75rem;transition:background .2s}.features article:hover{background:var(--bg)}
-.features span{font:400 .8rem var(--mono);color:var(--accent)}.features h2{font-size:1.15rem;letter-spacing:-.02em;margin:.6rem 0 .3rem}.features p{margin:0;color:var(--muted)}
-.end{text-align:center;padding:4rem 1rem 6rem}.end h2{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.04em;margin:0 0 1.5rem}
-footer{display:flex;gap:1.5rem;padding:1.5rem clamp(1rem,4vw,3rem);border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}footer span{margin-right:auto}
-@media (max-width:56rem){.features{grid-template-columns:1fr;margin-inline:1rem}.bar nav{display:none}.bar .btn{margin-left:auto}#theme{margin-left:auto}.bar .btn{margin-left:0}}
+/* 1. Reset and base ------------------------------------------------ */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body { margin: 0; }
+img,
+svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button,
+input,
+select,
+textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+/* Visually hidden, still read by screen readers */
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 2. Design tokens ------------------------------------------------- */
+/* Dark theme (default) */
+:root {
+  color-scheme: dark;
+  --bg: #09090B;
+  --panel: #111114;
+  --ink: #FAFAFA;
+  --muted: #A1A1AA;
+  --line: #27272A;
+  --accent: #34D399;
+  --accent-ink: #052E1F;
+  --body: 'Geist', system-ui, sans-serif;
+  --mono: 'Geist Mono', ui-monospace, monospace;
+  --radius: .5rem;
+  --gutter: clamp(1rem, 4vw, 3rem);
+}
+
+/* Light theme: chosen with the theme switch */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #FAFAFA;
+  --panel: #FFFFFF;
+  --ink: #09090B;
+  --muted: #52525B;
+  --line: #E4E4E7;
+  --accent: #059669;
+}
+
+/* Light theme: follows the system setting until the visitor chooses */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --bg: #FAFAFA;
+    --panel: #FFFFFF;
+    --ink: #09090B;
+    --muted: #52525B;
+    --line: #E4E4E7;
+    --accent: #059669;
+  }
+}
+
+/* 3. Typography and global elements -------------------------------- */
+body {
+  font: 1rem/1.55 var(--body);
+  background: var(--bg);
+  color: var(--ink);
+  transition: background .3s, color .3s;
+}
+
+code { font-family: var(--mono); font-size: .9em; }
+
+h1 {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+  margin: 1.2rem 0 1rem;
+}
+h1 span { color: var(--muted); }
+
+/* 4. Header and navigation ----------------------------------------- */
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: .9rem var(--gutter);
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.logo { font-weight: 700; font-size: 1.15rem; }
+
+.bar nav {
+  display: flex;
+  gap: 1.4rem;
+  margin-right: auto;
+  color: var(--muted);
+  font-size: .92rem;
+}
+.bar nav a:hover { color: var(--ink); }
+
+/* Theme switch and menu button share one look */
+#theme,
+.menu-toggle {
+  border: 1px solid var(--line);
+  background: none;
+  border-radius: var(--radius);
+  height: 2.2rem;
+}
+#theme { width: 2.2rem; }
+.menu-toggle { display: none; padding: 0 .8rem; font-size: .9rem; }
+
+/* 5. Buttons ------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 500;
+  padding: .55rem 1.1rem;
+  border-radius: var(--radius);
+  transition: opacity .2s;
+}
+.btn:hover { opacity: .85; }
+
+/* 6. Hero ---------------------------------------------------------- */
+.hero {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 5rem 1rem 3rem;
+  text-align: center;
+  background: radial-gradient(50% 40% at 50% 0, color-mix(in srgb, var(--accent) 18%, transparent), transparent);
+}
+
+.pill {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: .25rem .9rem .25rem .3rem;
+  font-size: .85rem;
+  color: var(--muted);
+}
+.pill b {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 99px;
+  padding: .05rem .5rem;
+  margin-right: .3rem;
+}
+
+.hero > p {
+  color: var(--muted);
+  font-size: 1.15rem;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.hero .cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.cta code {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: .5rem 1rem;
+  color: var(--ink);
+}
+
+/* 7. Terminal demo (always dark, in both themes) ------------------- */
+.term {
+  max-width: 42rem;
+  margin: 3rem auto 0;
+  text-align: left;
+  background: #0C0C0E;
+  color: #E4E4E7;
+  border: 1px solid #27272A;
+  border-radius: .9rem;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgb(0 0 0 / .4), 0 0 0 1px rgb(52 211 153 / .08);
+}
+
+.dots {
+  display: flex;
+  gap: .4rem;
+  align-items: center;
+  margin: 0;
+  padding: .7rem 1rem;
+  border-bottom: 1px solid #27272A;
+  font: 400 .8rem var(--mono);
+  color: #71717A;
+}
+.dots i { width: .7rem; height: .7rem; border-radius: 50%; background: #3F3F46; }
+.dots span { margin-left: auto; }
+
+pre {
+  margin: 0;
+  padding: 1.2rem;
+  font: 400 .9rem/1.7 var(--mono);
+  overflow: auto;
+}
+pre b { color: #71717A; }
+.d { color: #A1A1AA; }  /* dimmed step text */
+.g { color: #34D399; }  /* success text */
+
+/* Blinking cursor */
+.cur {
+  display: inline-block;
+  width: .55em;
+  height: 1.1em;
+  background: #34D399;
+  vertical-align: text-bottom;
+  animation: blink 1s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* 8. Logo strip ---------------------------------------------------- */
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 2.5rem;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  border-block: 1px solid var(--line);
+}
+.logos span { font-size: .85rem; }
+.logos b { font-size: 1.1rem; letter-spacing: -.02em; }
+
+/* 9. Features grid ------------------------------------------------- */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;                    /* the 1px gaps draw the grid lines */
+  max-width: 68rem;
+  margin: 4rem auto;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--line);
+}
+.features article {
+  background: var(--panel);
+  padding: 1.75rem;
+  transition: background .2s;
+}
+.features article:hover { background: var(--bg); }
+.features span { font: 400 .8rem var(--mono); color: var(--accent); }
+.features h2 { font-size: 1.15rem; letter-spacing: -.02em; margin: .6rem 0 .3rem; }
+.features p { margin: 0; color: var(--muted); }
+
+/* 10. Closing call to action --------------------------------------- */
+.end { text-align: center; padding: 4rem 1rem 6rem; }
+.end h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -.04em;
+  margin: 0 0 1.5rem;
+}
+
+/* 11. Footer ------------------------------------------------------- */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.5rem var(--gutter);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .88rem;
+}
+footer span { margin-right: auto; }
+
+/* 12. Responsive --------------------------------------------------- */
+@media (max-width: 56rem) {
+  .features { grid-template-columns: 1fr; margin-inline: 1rem; }
+
+  .bar { flex-wrap: wrap; gap: .75rem; }
+  .bar nav { order: 5; width: 100%; flex-wrap: wrap; }
+  #theme { margin-left: auto; }
+
+  /* With JavaScript on, the navigation folds into the Menu button */
+  .js .menu-toggle { display: inline-block; }
+  .js .bar nav { display: none; flex-direction: column; gap: 0; }
+  .js .bar nav.is-open { display: flex; }
+  .js .bar nav a { padding: .7rem 0; border-top: 1px solid var(--line); }
+}
+
+@media (max-width: 30rem) {
+  .bar .btn { display: none; }  /* the hero already has the main button */
+}
