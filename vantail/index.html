@@ -1,58 +1,404 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-<meta charset="utf-8">
-<script>document.documentElement.classList.replace('no-js','js')</script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vantail — the deploy tool that stays out of your way</title>
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-<meta name="description" content="Vantail turns a git push into a live URL in under a minute, with one-command rollbacks.">
-<meta name="theme-color" content="#09090B">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2334D399'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%2309090B'%3EV%3C/text%3E%3C/svg%3E">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Vantail — the deploy tool that stays out of your way">
-<meta property="og:description" content="Vantail turns a git push into a live URL in under a minute, with one-command rollbacks.">
-<!-- Social sharing image: add <meta property="og:image" content="https://your-domain.com/share.jpg"> (1200x630) -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vantail – Ship on a Friday. Sleep on a Friday.</title>
+  <meta name="description" content="Vantail turns a git push into a live URL in under a minute, with preview environments for every branch and one-command rollbacks.">
+  <meta name="theme-color" content="#09090B">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vantail – Ship on a Friday. Sleep on a Friday.">
+  <meta property="og:description" content="Vantail turns a git push into a live URL in under a minute, with preview environments for every branch and one-command rollbacks.">
+  <!-- Social image: add <meta property="og:image" content="https://your-domain.com/share.png"> (1200x630) -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Applies the saved theme before first paint and preloads the fonts
+       (keep it in the head, before the stylesheet, without defer) -->
+  <script src="assets/js/theme-init.js"></script>
+
+  <link rel="stylesheet" href="assets/css/vantail.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <script src="assets/js/vantail.js" defer></script>
 </head>
 <body>
-<header class="bar">
-  <a class="logo" href="#"><span aria-hidden="true">◆</span> vantail</a>
-  <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
-  <nav id="main-nav" aria-label="Main"><a href="#features">Features</a><a href="#">Docs</a><a href="#">Pricing</a><a href="#">Changelog</a></nav>
-  <button id="theme" type="button" aria-label="Switch colour theme"><span aria-hidden="true">◐</span></button>
-  <a class="btn" href="#">Get started</a>
-</header>
-<main>
-  <section class="hero">
-    <a class="pill" href="#"><b>v3.0</b> Preview environments for every branch →</a>
-    <h1>Ship on a Friday.<br><span>Sleep on a Friday.</span></h1>
-    <p>Vantail turns a git push into a live URL in under a minute, with rollbacks that take one command.</p>
-    <p class="cta"><a class="btn" href="#">Start for free</a><code>npm i -g vantail-cli</code></p>
-    <div class="term" role="img" aria-label="Terminal showing a successful deploy">
-      <p class="dots" aria-hidden="true"><i></i><i></i><i></i><span>~/my-site</span></p>
-<pre><b>$</b> vantail deploy
-<span class="d">→ Building</span>            <span class="g">done</span> 11.2s
-<span class="d">→ Running checks</span>      <span class="g">done</span> 4.0s
-<span class="d">→ Uploading 214 files</span> <span class="g">done</span> 2.7s
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<span class="g">✔ Live</span> at <u>https://my-site.example.app</u>
-<b>$</b> <i class="cur"></i></pre>
+  <!-- Site header ========================================================= -->
+  <header class="site-header">
+    <div class="site-header__inner container container--wide">
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 2 30 16 16 30 2 16Z" fill="currentColor"/><path class="logo__cut" d="M16 10.5 21.5 16 16 21.5 10.5 16Z"/></svg>
+        <span class="logo__text">vantail</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+        <li class="site-nav__item">
+          <details class="nav-menu">
+            <summary class="site-nav__link nav-menu__toggle is-active">Home <svg class="icon nav-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <ul class="nav-menu__list">
+              <li><a class="nav-menu__link" href="index.html" aria-current="page">Home A<span class="nav-menu__desc">Terminal-led landing page</span></a></li>
+              <li><a class="nav-menu__link" href="home-2.html">Home B<span class="nav-menu__desc">Product screenshot and stats</span></a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="site-nav__item"><a class="site-nav__link" href="features.html">Features</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="pricing.html">Pricing</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="docs.html">Docs</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="changelog.html">Changelog</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="blog.html">Blog</a></li>
+        <li class="site-nav__item">
+          <details class="nav-menu">
+            <summary class="site-nav__link nav-menu__toggle">Company <svg class="icon nav-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <ul class="nav-menu__list">
+              <li><a class="nav-menu__link" href="about.html">About<span class="nav-menu__desc">Team, values and story</span></a></li>
+              <li><a class="nav-menu__link" href="customers.html">Customers<span class="nav-menu__desc">Case studies</span></a></li>
+              <li><a class="nav-menu__link" href="contact.html">Contact<span class="nav-menu__desc">Talk to sales or support</span></a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="site-nav__item site-nav__item--mobile"><a class="site-nav__link" href="sign-in.html">Sign in</a></li>
+        <li class="site-nav__item site-nav__item--narrow"><a class="site-nav__link" href="sign-up.html">Get started</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+          <svg class="icon theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+        <a class="btn btn--ghost btn--sm site-header__signin" href="sign-in.html">Sign in</a>
+        <a class="btn btn--primary btn--sm site-header__cta" href="sign-up.html">Get started</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="icon nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icon nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
     </div>
-  </section>
-  <section class="logos" aria-label="Used by"><span>Used by teams at</span><b>Northwind</b><b>Halcyon</b><b>Parcel &amp; Post</b><b>Quartz Labs</b><b>Tessera</b></section>
-  <section class="features" id="features">
-    <article><span>01</span><h2>Preview every branch</h2><p>Each pull request gets its own URL, so reviews happen on a real site.</p></article>
-    <article><span>02</span><h2>One-command rollback</h2><p><code>vantail rollback</code> puts the last good build back in seconds.</p></article>
-    <article><span>03</span><h2>Edge by default</h2><p>Your pages are served from the region nearest each visitor.</p></article>
-    <article><span>04</span><h2>Secrets that stay secret</h2><p>Encrypted environment variables, scoped per environment.</p></article>
-    <article><span>05</span><h2>Logs you can read</h2><p>Structured, searchable, and streamed live to your terminal.</p></article>
-    <article><span>06</span><h2>No config to start</h2><p>Vantail detects your framework. Add a file only when you need one.</p></article>
-  </section>
-  <section class="end"><h2>Your next deploy is 60 seconds away.</h2><a class="btn" href="#">Start for free</a></section>
-</main>
-<footer><span>© Vantail</span><a href="#">Status</a><a href="#">Privacy</a><a href="#">GitHub</a></footer>
-<style>.dsz-preview{position:fixed;right:12px;bottom:12px;z-index:99999;background:#111;color:#fff;font:600 12px/1 system-ui,sans-serif;padding:9px 13px;border-radius:99px;opacity:.88;pointer-events:none;letter-spacing:.02em;box-shadow:0 2px 10px rgba(0,0,0,.3)}</style><div class="dsz-preview" aria-hidden="true">Live preview &middot; DesignStudioZero</div>
+  </header>
+
+  <!-- Main content ======================================================== -->
+  <main id="main">
+
+    <!-- Hero ============================================================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <a class="pill" href="changelog.html"><span class="pill__badge">v3.0</span> Preview environments for every branch <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <h1 class="hero__title" id="hero-title">Ship on a Friday.<br> <span class="hero__title-muted">Sleep on a Friday.</span></h1>
+        <p class="hero__lead">Vantail turns a git push into a live URL in under a minute, with rollbacks that take one command.</p>
+        <div class="hero__actions">
+          <a class="btn btn--accent btn--lg" href="sign-up.html">Start for free</a>
+          <div class="install-cmd" data-copy="install command">
+            <span class="t-prompt" aria-hidden="true">$</span>
+            <code>npm i -g vantail-cli</code>
+          </div>
+        </div>
+        <p class="hero__note">Free for personal projects. No card needed.</p>
+
+        <div class="hero__terminal">
+          <figure class="terminal terminal--animated u-mb-0">
+            <div class="terminal__bar" aria-hidden="true">
+              <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
+              <span class="terminal__title">~/my-site</span>
+            </div>
+            <pre class="terminal__body"><span class="terminal__line"><span class="t-prompt">$</span> vantail deploy</span><span class="terminal__line"><span class="t-dim">→ Building</span>            <span class="t-ok">done</span> 11.2s</span><span class="terminal__line"><span class="t-dim">→ Running checks</span>      <span class="t-ok">done</span> 4.0s</span><span class="terminal__line"><span class="t-dim">→ Uploading 214 files</span> <span class="t-ok">done</span> 2.7s</span><span class="terminal__line">
+<span class="t-ok">✔ Live</span> at <span class="t-link">https://my-site.example.app</span></span><span class="terminal__line"><span class="t-prompt">$</span> <span class="terminal__cursor"></span></span></pre>
+            <figcaption class="u-visually-hidden">Terminal output: running vantail deploy builds, checks and uploads the site, then prints the live URL.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logos ============================================================ -->
+    <section class="logo-strip" aria-labelledby="logos-title">
+      <div class="container">
+        <h2 class="logo-strip__label" id="logos-title">Used by teams at</h2>
+        <ul class="logo-strip__list">
+          <li><span class="brand"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 15 8-6 8 6M4 20l8-6 8 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>Northfold</span></li>
+          <li><span class="brand"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M4 12h16" stroke="currentColor" stroke-width="2.4"/></svg>Halcyon</span></li>
+          <li><span class="brand"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M4 10h16" stroke="currentColor" stroke-width="2.4"/></svg>Parcel &amp; Post</span></li>
+          <li><span class="brand brand--mono"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9L12 3Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>quartzline</span></li>
+          <li><span class="brand"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5" fill="currentColor"/><rect x="13" y="4" width="7" height="7" rx="1.5" fill="currentColor" opacity=".5"/><rect x="4" y="13" width="7" height="7" rx="1.5" fill="currentColor" opacity=".5"/><rect x="13" y="13" width="7" height="7" rx="1.5" fill="currentColor"/></svg>Tessaro</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Features ========================================================= -->
+    <section class="section" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__eyebrow">// features</span>
+          <h2 class="section__title" id="features-title">Everything between git push and production</h2>
+          <p class="section__lead">Builds, previews, edge hosting, secrets and logs in one tool, with sensible defaults you can change later.</p>
+        </div>
+        <ul class="feature-grid">
+          <li class="feature-grid__item">
+            <span class="feature-grid__num">01</span>
+            <h3 class="feature-grid__title">Preview every branch</h3>
+            <p class="feature-grid__text">Each pull request gets its own URL, so reviews happen on a real site.</p>
+          </li>
+          <li class="feature-grid__item">
+            <span class="feature-grid__num">02</span>
+            <h3 class="feature-grid__title">One-command rollback</h3>
+            <p class="feature-grid__text"><code>vantail rollback</code> puts the last good build back in seconds.</p>
+          </li>
+          <li class="feature-grid__item">
+            <span class="feature-grid__num">03</span>
+            <h3 class="feature-grid__title">Edge by default</h3>
+            <p class="feature-grid__text">Your pages are served from the region nearest each visitor.</p>
+          </li>
+          <li class="feature-grid__item">
+            <span class="feature-grid__num">04</span>
+            <h3 class="feature-grid__title">Secrets that stay secret</h3>
+            <p class="feature-grid__text">Encrypted environment variables, scoped per environment.</p>
+          </li>
+          <li class="feature-grid__item">
+            <span class="feature-grid__num">05</span>
+            <h3 class="feature-grid__title">Logs you can read</h3>
+            <p class="feature-grid__text">Structured, searchable, and streamed live to your terminal.</p>
+          </li>
+          <li class="feature-grid__item">
+            <span class="feature-grid__num">06</span>
+            <h3 class="feature-grid__title">No config to start</h3>
+            <p class="feature-grid__text">Vantail detects your project type. Add a file only when you need one.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How it works ===================================================== -->
+    <section class="section section--alt" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section__header section__header--center">
+          <span class="section__eyebrow">// how it works</span>
+          <h2 class="section__title" id="how-title">Three commands to production</h2>
+          <p class="section__lead">Install the CLI, link your repository and push. Vantail handles the rest.</p>
+        </div>
+        <ol class="steps grid grid--3">
+          <li class="step">
+            <span class="step__num">Step 01</span>
+            <h3 class="card__title">Install</h3>
+            <p class="step__text">One global package, on macOS, Linux or Windows.</p>
+            <div class="code-block" data-copy="install command">
+              <div class="code-block__header"><span>shell</span></div>
+              <pre><code>npm i -g vantail-cli</code></pre>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">Step 02</span>
+            <h3 class="card__title">Link</h3>
+            <p class="step__text">Connect a repository and pick a team. It takes ten seconds.</p>
+            <div class="code-block" data-copy="link command">
+              <div class="code-block__header"><span>shell</span></div>
+              <pre><code>vantail link</code></pre>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">Step 03</span>
+            <h3 class="card__title">Push</h3>
+            <p class="step__text">Every push builds. The main branch goes live.</p>
+            <div class="code-block" data-copy="push command">
+              <div class="code-block__header"><span>shell</span></div>
+              <pre><code>git push origin main</code></pre>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Project types (tabs) ============================================= -->
+    <section class="section" aria-labelledby="config-title">
+      <div class="container">
+        <div class="split">
+          <div class="split__content">
+            <span class="section__eyebrow">// config</span>
+            <h2 class="split__title" id="config-title">Zero config, until you want some</h2>
+            <p class="split__text">Vantail reads your project and picks the right build. When you need more control, a short <code>vantail.toml</code> covers it.</p>
+            <ul class="check-list">
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg> Static sites, servers and containers</li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg> Monorepos with per-folder builds</li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg> Custom build and output commands</li>
+            </ul>
+            <a class="link-arrow" href="docs.html">Read the configuration docs <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="split__media">
+            <div class="tabs" data-tabs data-tabs-label="Project types">
+              <div class="tabs__panel" id="cfg-static" data-tab-label="Static">
+                <h3 class="tabs__panel-title">Static</h3>
+                <div class="code-block u-mb-0" data-copy="static config">
+                  <div class="code-block__header"><span>vantail.toml</span></div>
+                  <pre><code><span class="tok-c"># A static site</span>
+<span class="tok-k">[build]</span>
+command = <span class="tok-s">"npm run build"</span>
+output  = <span class="tok-s">"dist"</span></code></pre>
+                </div>
+              </div>
+              <div class="tabs__panel" id="cfg-server" data-tab-label="Server">
+                <h3 class="tabs__panel-title">Server</h3>
+                <div class="code-block u-mb-0" data-copy="server config">
+                  <div class="code-block__header"><span>vantail.toml</span></div>
+                  <pre><code><span class="tok-c"># A long-running server</span>
+<span class="tok-k">[service]</span>
+start  = <span class="tok-s">"node server.js"</span>
+port   = <span class="tok-n">3000</span>
+health = <span class="tok-s">"/healthz"</span></code></pre>
+                </div>
+              </div>
+              <div class="tabs__panel" id="cfg-monorepo" data-tab-label="Monorepo">
+                <h3 class="tabs__panel-title">Monorepo</h3>
+                <div class="code-block u-mb-0" data-copy="monorepo config">
+                  <div class="code-block__header"><span>vantail.toml</span></div>
+                  <pre><code><span class="tok-c"># One repository, two apps</span>
+<span class="tok-k">[[app]]</span>
+name = <span class="tok-s">"web"</span>
+root = <span class="tok-s">"apps/web"</span>
+
+<span class="tok-k">[[app]]</span>
+name = <span class="tok-s">"api"</span>
+root = <span class="tok-s">"apps/api"</span></code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats ============================================================ -->
+    <section class="section section--tight section--alt" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 class="u-visually-hidden" id="stats-title">Vantail in numbers</h2>
+        <dl class="stats">
+          <div class="stat">
+            <dt class="stat__label">Median deploy time</dt>
+            <dd class="stat__value">38<span>s</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Deploys last month</dt>
+            <dd class="stat__value">2.1<span>M</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Edge regions</dt>
+            <dd class="stat__value">34</dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Uptime, past 12 months</dt>
+            <dd class="stat__value">99.99<span>%</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Testimonial ====================================================== -->
+    <section class="section" aria-labelledby="quote-title">
+      <div class="container">
+        <h2 class="u-visually-hidden" id="quote-title">What customers say</h2>
+        <figure class="quote-large">
+          <blockquote class="quote-large__text">
+            <p>“We used to freeze deploys on Fridays. Now we ship twelve times a day and nobody watches the release.”</p>
+          </blockquote>
+          <figcaption class="testimonial__author">
+            <img class="avatar avatar--lg" src="assets/img/avatars/avatar-3.svg" width="64" height="64" alt="" loading="lazy" decoding="async">
+            <span><cite class="testimonial__name">Mara Lindqvist</cite> Head of Platform, Northfold</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ ============================================================== -->
+    <section class="section section--alt" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <div class="section__header section__header--center">
+          <h2 class="section__title" id="faq-title">Questions, answered</h2>
+          <p class="section__lead">More in the <a class="link-arrow" href="docs.html">docs</a>.</p>
+        </div>
+        <div class="accordion" data-accordion="single">
+          <details class="accordion__item">
+            <summary class="accordion__summary">Do I need to change my code? <span class="accordion__icon" aria-hidden="true"></span></summary>
+            <div class="accordion__content">
+              <p>No. Vantail runs the same build command you run locally and serves the output. Most projects deploy without any changes.</p>
+            </div>
+          </details>
+          <details class="accordion__item">
+            <summary class="accordion__summary">What happens if a deploy fails? <span class="accordion__icon" aria-hidden="true"></span></summary>
+            <div class="accordion__content">
+              <p>Nothing changes for your visitors. The last good build keeps serving traffic, and you get the failing log in your terminal and inbox.</p>
+            </div>
+          </details>
+          <details class="accordion__item">
+            <summary class="accordion__summary">Can I use my own domain? <span class="accordion__icon" aria-hidden="true"></span></summary>
+            <div class="accordion__content">
+              <p>Yes, on every plan. Add the domain, point one DNS record at Vantail and certificates are issued automatically.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action =================================================== -->
+    <section class="cta-band" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 class="cta-band__title" id="cta-title">Your next deploy is 60 seconds away.</h2>
+        <p class="cta-band__text">Start on the free plan and upgrade when your team grows.</p>
+        <div class="btn-group btn-group--center">
+          <a class="btn btn--accent btn--lg" href="sign-up.html">Start for free</a>
+          <a class="btn btn--ghost btn--lg" href="pricing.html">See pricing</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site footer ========================================================= -->
+  <footer class="site-footer">
+    <div class="container container--wide">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="logo" href="index.html">
+            <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 2 30 16 16 30 2 16Z" fill="currentColor"/><path class="logo__cut" d="M16 10.5 21.5 16 16 21.5 10.5 16Z"/></svg>
+            <span class="logo__text">vantail</span>
+          </a>
+          <p class="site-footer__about">The deploy tool that stays out of your way. Push code, get a URL, roll back in one command.</p>
+          <p class="status"><span class="status__dot" aria-hidden="true"></span> All systems normal</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Product</h2>
+            <ul class="site-footer__list">
+              <li><a href="features.html">Features</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="changelog.html">Changelog</a></li>
+              <li><a href="docs.html">Documentation</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Company</h2>
+            <ul class="site-footer__list">
+              <li><a href="about.html">About</a></li>
+              <li><a href="customers.html">Customers</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">More pages</h2>
+            <ul class="site-footer__list">
+              <li><a href="home-2.html">Home layout B</a></li>
+              <li><a href="sign-in.html">Sign in</a></li>
+              <li><a href="sign-up.html">Create account</a></li>
+              <li><a href="404.html">404 page</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2026 Vantail, Inc. All rights reserved.</p>
+        <p class="site-footer__copy">Made for teams who ship.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Live preview badge (demo copy only) -->
+  <div class="dsz-preview" aria-hidden="true">Live preview &middot; DesignStudioZero</div>
 </body>
 </html>

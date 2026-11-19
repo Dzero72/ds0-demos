@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vantail – Deploys your whole team can see</title>
+  <meta name="description" content="One dashboard for every deploy, preview and rollback. Vantail gives product teams fast builds, edge hosting and logs in one place.">
+  <meta name="theme-color" content="#09090B">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vantail – Deploys your whole team can see">
+  <meta property="og:description" content="One dashboard for every deploy, preview and rollback. Vantail gives product teams fast builds, edge hosting and logs in one place.">
+  <!-- Social image: add <meta property="og:image" content="https://your-domain.com/share.png"> (1200x630) -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Applies the saved theme before first paint and preloads the fonts
+       (keep it in the head, before the stylesheet, without defer) -->
+  <script src="assets/js/theme-init.js"></script>
+
+  <link rel="stylesheet" href="assets/css/vantail.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <script src="assets/js/vantail.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Site header ========================================================= -->
+  <header class="site-header">
+    <div class="site-header__inner container container--wide">
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 2 30 16 16 30 2 16Z" fill="currentColor"/><path class="logo__cut" d="M16 10.5 21.5 16 16 21.5 10.5 16Z"/></svg>
+        <span class="logo__text">vantail</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+        <li class="site-nav__item">
+          <details class="nav-menu">
+            <summary class="site-nav__link nav-menu__toggle is-active">Home <svg class="icon nav-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <ul class="nav-menu__list">
+              <li><a class="nav-menu__link" href="index.html">Home A<span class="nav-menu__desc">Terminal-led landing page</span></a></li>
+              <li><a class="nav-menu__link" href="home-2.html" aria-current="page">Home B<span class="nav-menu__desc">Product screenshot and stats</span></a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="site-nav__item"><a class="site-nav__link" href="features.html">Features</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="pricing.html">Pricing</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="docs.html">Docs</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="changelog.html">Changelog</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="blog.html">Blog</a></li>
+        <li class="site-nav__item">
+          <details class="nav-menu">
+            <summary class="site-nav__link nav-menu__toggle">Company <svg class="icon nav-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <ul class="nav-menu__list">
+              <li><a class="nav-menu__link" href="about.html">About<span class="nav-menu__desc">Team, values and story</span></a></li>
+              <li><a class="nav-menu__link" href="customers.html">Customers<span class="nav-menu__desc">Case studies</span></a></li>
+              <li><a class="nav-menu__link" href="contact.html">Contact<span class="nav-menu__desc">Talk to sales or support</span></a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="site-nav__item site-nav__item--mobile"><a class="site-nav__link" href="sign-in.html">Sign in</a></li>
+        <li class="site-nav__item site-nav__item--narrow"><a class="site-nav__link" href="sign-up.html">Get started</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+          <svg class="icon theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+        <a class="btn btn--ghost btn--sm site-header__signin" href="sign-in.html">Sign in</a>
+        <a class="btn btn--primary btn--sm site-header__cta" href="sign-up.html">Get started</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="icon nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icon nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content ======================================================== -->
+  <main id="main">
+
+    <!-- Hero: copy and product screenshot ================================ -->
+    <section class="hero hero--split" aria-labelledby="hero-title">
+      <div class="container container--wide">
+        <div class="hero__inner">
+          <div class="hero__content">
+            <a class="pill" href="changelog.html"><span class="pill__badge">New</span> Team dashboards are here <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <h1 class="hero__title" id="hero-title">Deploys your whole team can see.</h1>
+            <p class="hero__lead">Every push, preview and rollback in one calm dashboard. Engineers keep the CLI; everyone else gets a link.</p>
+            <div class="hero__actions">
+              <a class="btn btn--accent btn--lg" href="sign-up.html">Start for free</a>
+              <a class="btn btn--ghost btn--lg" href="contact.html">Book a demo</a>
+            </div>
+            <p class="hero__note">Free for personal projects. Team plans from $16 per seat.</p>
+          </div>
+
+          <!-- Product screenshot: built in HTML and CSS, so it stays sharp and themes with the page.
+               Replace it with an <img> of your own product if you prefer. -->
+          <figure class="app-window u-mb-0">
+            <div class="app-window__bar" aria-hidden="true">
+              <span class="app-window__dot"></span><span class="app-window__dot"></span><span class="app-window__dot"></span>
+              <span class="app-window__url">app.vantail.example/acme/web</span>
+            </div>
+            <div class="app-window__body">
+              <div class="app-window__side" aria-hidden="true">
+                <ul>
+                  <li class="app-window__nav-item app-window__nav-item--active">Deploys</li>
+                  <li class="app-window__nav-item">Previews</li>
+                  <li class="app-window__nav-item">Logs</li>
+                  <li class="app-window__nav-item">Domains</li>
+                  <li class="app-window__nav-item">Settings</li>
+                </ul>
+              </div>
+              <div class="app-window__main">
+                <div class="app-window__head">
+                  <p class="app-window__title">acme / web</p>
+                  <span class="badge badge--new">Production · healthy</span>
+                </div>
+                <div class="app-chart" aria-hidden="true">
+                  <span class="app-chart__bar app-chart__bar--h30"></span>
+                  <span class="app-chart__bar app-chart__bar--h45"></span>
+                  <span class="app-chart__bar app-chart__bar--h40"></span>
+                  <span class="app-chart__bar app-chart__bar--h55"></span>
+                  <span class="app-chart__bar app-chart__bar--h70"></span>
+                  <span class="app-chart__bar app-chart__bar--h60"></span>
+                  <span class="app-chart__bar app-chart__bar--h85"></span>
+                  <span class="app-chart__bar app-chart__bar--h100"></span>
+                </div>
+                <ul class="deploy-list">
+                  <li class="deploy-list__item"><span class="status__dot" aria-hidden="true"></span><span class="deploy-list__branch">main · fix: cache headers</span><span class="deploy-list__time">38s · 2m ago</span></li>
+                  <li class="deploy-list__item"><span class="status__dot" aria-hidden="true"></span><span class="deploy-list__branch">feat/checkout-v2 · preview</span><span class="deploy-list__time">41s · 9m ago</span></li>
+                  <li class="deploy-list__item"><span class="status__dot" aria-hidden="true"></span><span class="deploy-list__branch">main · chore: bump deps</span><span class="deploy-list__time">35s · 1h ago</span></li>
+                </ul>
+              </div>
+            </div>
+            <figcaption class="u-visually-hidden">Vantail dashboard showing a healthy production deploy, a weekly deploy chart and the three latest deploys.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats ============================================================ -->
+    <section class="section section--tight section--alt" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 class="u-visually-hidden" id="stats-title">Vantail in numbers</h2>
+        <dl class="stats">
+          <div class="stat">
+            <dt class="stat__label">Teams shipping on Vantail</dt>
+            <dd class="stat__value">18<span>k</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Faster releases, on average</dt>
+            <dd class="stat__value">6<span>×</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Median rollback</dt>
+            <dd class="stat__value">4<span>s</span></dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">Customer satisfaction</dt>
+            <dd class="stat__value">4.9<span>/5</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Benefits ========================================================= -->
+    <section class="section" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section__header section__header--center">
+          <span class="section__eyebrow">// why teams switch</span>
+          <h2 class="section__title" id="benefits-title">Built for the people around the code, too</h2>
+          <p class="section__lead">Designers review previews, managers see what shipped, and on-call sleeps through the night.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M18 10c0 4-6 3-11 7"/></svg></span>
+            <h3 class="card__title">A link for every change</h3>
+            <p class="card__text">Each pull request gets a preview URL, posted to the review automatically. Comment on the real thing.</p>
+          </article>
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 16a8 8 0 1 1 16 0"/><path d="m12 16 4-5"/></svg></span>
+            <h3 class="card__title">See what shipped</h3>
+            <p class="card__text">A timeline of every deploy with its author, commit and build time. No more asking in chat.</p>
+          </article>
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2Z"/><path d="M10 21h4"/></svg></span>
+            <h3 class="card__title">Alerts that matter</h3>
+            <p class="card__text">Failed builds and error spikes go to the person who pushed, not to a channel everyone mutes.</p>
+          </article>
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4v6h6"/><path d="M5 10a8 8 0 1 1 1.5 7"/></svg></span>
+            <h3 class="card__title">Instant rollback</h3>
+            <p class="card__text">Every build is kept. Put any of them back in production with one click or one command.</p>
+          </article>
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3 5 6v6c0 4.2 3 7.5 7 9 4-1.5 7-4.8 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3 class="card__title">Access you control</h3>
+            <p class="card__text">Roles, single sign-on and audit logs on team plans. Preview links can be private.</p>
+          </article>
+          <article class="card">
+            <span class="icon-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></span>
+            <h3 class="card__title">Fast everywhere</h3>
+            <p class="card__text">34 edge regions serve your site close to every visitor, with no extra setup.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials ===================================================== -->
+    <section class="section section--alt" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__eyebrow">// customers</span>
+          <h2 class="section__title" id="testimonials-title">Teams ship more, and worry less</h2>
+        </div>
+        <div class="grid grid--3">
+          <figure class="testimonial">
+            <blockquote class="testimonial__quote">
+              <p>“Our designers stopped sending screenshots. They open the preview link and leave comments on the actual page.”</p>
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <img class="avatar" src="assets/img/avatars/avatar-1.svg" width="40" height="40" alt="" loading="lazy" decoding="async">
+              <span><cite class="testimonial__name">Priya Raman</cite> Design Lead, Halcyon</span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote class="testimonial__quote">
+              <p>“We moved forty services in a week. Rollbacks went from a runbook to one command.”</p>
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <img class="avatar" src="assets/img/avatars/avatar-2.svg" width="40" height="40" alt="" loading="lazy" decoding="async">
+              <span><cite class="testimonial__name">Tomás Ferreira</cite> Staff Engineer, Tessaro</span>
+            </figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote class="testimonial__quote">
+              <p>“The dashboard is the first deploy tool our product managers actually open. That alone was worth it.”</p>
+            </blockquote>
+            <figcaption class="testimonial__author">
+              <img class="avatar" src="assets/img/avatars/avatar-4.svg" width="40" height="40" alt="" loading="lazy" decoding="async">
+              <span><cite class="testimonial__name">Hannah Osei</cite> VP Product, Parcel &amp; Post</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrations ===================================================== -->
+    <section class="section" aria-labelledby="integrations-title">
+      <div class="container">
+        <div class="section__header section__header--center">
+          <span class="section__eyebrow">// integrations</span>
+          <h2 class="section__title" id="integrations-title">Fits the tools you already use</h2>
+          <p class="section__lead">Connect your repository host, chat and monitoring in a few clicks.</p>
+        </div>
+        <ul class="integrations">
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M18 10c0 4-6 3-11 7"/></svg></span><span><span class="integration__name">Git hosts</span><span class="integration__type">Source control</span></span></li>
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4V5Z"/></svg></span><span><span class="integration__name">Team chat</span><span class="integration__type">Notifications</span></span></li>
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span><span><span class="integration__name">Log drains</span><span class="integration__type">Observability</span></span></li>
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M14 9l2 2"/></svg></span><span><span class="integration__name">SSO providers</span><span class="integration__type">Identity</span></span></li>
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span><span><span class="integration__name">Databases</span><span class="integration__type">Data</span></span></li>
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2Z"/><path d="M10 21h4"/></svg></span><span><span class="integration__name">Paging tools</span><span class="integration__type">Incidents</span></span></li>
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 16a8 8 0 1 1 16 0"/><path d="m12 16 4-5"/></svg></span><span><span class="integration__name">Analytics</span><span class="integration__type">Insights</span></span></li>
+          <li class="integration"><span class="icon-tile u-mb-0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0V8ZM12 17v4"/></svg></span><span><span class="integration__name">Webhooks</span><span class="integration__type">Anything else</span></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Call to action =================================================== -->
+    <section class="cta-band" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 class="cta-band__title" id="cta-title">Give your team one place to ship from.</h2>
+        <p class="cta-band__text">Free for personal projects. Try a team plan for 14 days.</p>
+        <div class="btn-group btn-group--center">
+          <a class="btn btn--accent btn--lg" href="sign-up.html">Start for free</a>
+          <a class="btn btn--ghost btn--lg" href="customers.html">Read customer stories</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site footer ========================================================= -->
+  <footer class="site-footer">
+    <div class="container container--wide">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="logo" href="index.html">
+            <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 2 30 16 16 30 2 16Z" fill="currentColor"/><path class="logo__cut" d="M16 10.5 21.5 16 16 21.5 10.5 16Z"/></svg>
+            <span class="logo__text">vantail</span>
+          </a>
+          <p class="site-footer__about">The deploy tool that stays out of your way. Push code, get a URL, roll back in one command.</p>
+          <p class="status"><span class="status__dot" aria-hidden="true"></span> All systems normal</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Product</h2>
+            <ul class="site-footer__list">
+              <li><a href="features.html">Features</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="changelog.html">Changelog</a></li>
+              <li><a href="docs.html">Documentation</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Company</h2>
+            <ul class="site-footer__list">
+              <li><a href="about.html">About</a></li>
+              <li><a href="customers.html">Customers</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">More pages</h2>
+            <ul class="site-footer__list">
+              <li><a href="home-2.html">Home layout B</a></li>
+              <li><a href="sign-in.html">Sign in</a></li>
+              <li><a href="sign-up.html">Create account</a></li>
+              <li><a href="404.html">404 page</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2026 Vantail, Inc. All rights reserved.</p>
+        <p class="site-footer__copy">Made for teams who ship.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Live preview badge (demo copy only) -->
+  <div class="dsz-preview" aria-hidden="true">Live preview &middot; DesignStudioZero</div>
+</body>
+</html>

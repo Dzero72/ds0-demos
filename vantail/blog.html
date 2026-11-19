@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog – Vantail</title>
+  <meta name="description" content="Engineering deep dives, product news and practical guides from the Vantail team.">
+  <meta name="theme-color" content="#09090B">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog – Vantail">
+  <meta property="og:description" content="Engineering deep dives, product news and practical guides from the Vantail team.">
+  <!-- Social image: add <meta property="og:image" content="https://your-domain.com/share.png"> (1200x630) -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Applies the saved theme before first paint and preloads the fonts
+       (keep it in the head, before the stylesheet, without defer) -->
+  <script src="assets/js/theme-init.js"></script>
+
+  <link rel="stylesheet" href="assets/css/vantail.css">
+  <link rel="stylesheet" href="assets/css/demo.css">
+  <script src="assets/js/vantail.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Site header ========================================================= -->
+  <header class="site-header">
+    <div class="site-header__inner container container--wide">
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 2 30 16 16 30 2 16Z" fill="currentColor"/><path class="logo__cut" d="M16 10.5 21.5 16 16 21.5 10.5 16Z"/></svg>
+        <span class="logo__text">vantail</span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="site-nav__list">
+        <li class="site-nav__item">
+          <details class="nav-menu">
+            <summary class="site-nav__link nav-menu__toggle">Home <svg class="icon nav-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <ul class="nav-menu__list">
+              <li><a class="nav-menu__link" href="index.html">Home A<span class="nav-menu__desc">Terminal-led landing page</span></a></li>
+              <li><a class="nav-menu__link" href="home-2.html">Home B<span class="nav-menu__desc">Product screenshot and stats</span></a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="site-nav__item"><a class="site-nav__link" href="features.html">Features</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="pricing.html">Pricing</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="docs.html">Docs</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="changelog.html">Changelog</a></li>
+        <li class="site-nav__item"><a class="site-nav__link" href="blog.html" aria-current="page">Blog</a></li>
+        <li class="site-nav__item">
+          <details class="nav-menu">
+            <summary class="site-nav__link nav-menu__toggle">Company <svg class="icon nav-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <ul class="nav-menu__list">
+              <li><a class="nav-menu__link" href="about.html">About<span class="nav-menu__desc">Team, values and story</span></a></li>
+              <li><a class="nav-menu__link" href="customers.html">Customers<span class="nav-menu__desc">Case studies</span></a></li>
+              <li><a class="nav-menu__link" href="contact.html">Contact<span class="nav-menu__desc">Talk to sales or support</span></a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="site-nav__item site-nav__item--mobile"><a class="site-nav__link" href="sign-in.html">Sign in</a></li>
+        <li class="site-nav__item site-nav__item--narrow"><a class="site-nav__link" href="sign-up.html">Get started</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme">
+          <svg class="icon theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>
+        </button>
+        <a class="btn btn--ghost btn--sm site-header__signin" href="sign-in.html">Sign in</a>
+        <a class="btn btn--primary btn--sm site-header__cta" href="sign-up.html">Get started</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="icon nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icon nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content ======================================================== -->
+  <main id="main">
+
+    <!-- Page hero ======================================================== -->
+    <section class="page-hero page-hero--left" aria-labelledby="page-title">
+      <div class="container">
+        <span class="section__eyebrow">// blog</span>
+        <h1 class="page-hero__title" id="page-title">Notes on shipping software</h1>
+        <p class="page-hero__lead">Engineering deep dives, product news and practical guides from the Vantail team.</p>
+      </div>
+    </section>
+
+    <!-- Featured post ==================================================== -->
+    <section class="section section--tight" aria-labelledby="featured-title">
+      <div class="container">
+        <h2 class="u-visually-hidden" id="featured-title">Featured post</h2>
+        <article class="post-card post-card--featured">
+          <div class="post-card__media">
+            <img src="assets/img/covers/cover-1.svg" width="1600" height="1000" alt="">
+          </div>
+          <div class="post-card__body">
+            <p class="post-card__meta"><span class="badge badge--new">Featured</span> <time datetime="2026-11-12">12 November 2026</time> · 10 min read</p>
+            <h3 class="post-card__title"><a class="card__link" href="blog-post.html">Preview environments, from idea to every branch</a></h3>
+            <p class="post-card__excerpt">How we rebuilt previews so every branch gets a stable URL, and what we learned about caching, cost and clean-up along the way.</p>
+            <div class="person u-mt-8">
+              <img class="avatar" src="assets/img/avatars/avatar-5.svg" width="40" height="40" alt="">
+              <span><span class="person__name">Jun Park</span><span class="person__role">Engineering Manager</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- All posts ======================================================== -->
+    <section class="section section--tight" aria-labelledby="posts-title">
+      <div class="container">
+        <h2 class="section__title" id="posts-title">Latest posts</h2>
+        <div class="filter-bar" role="group" data-filter-group="post-grid" data-filter-status="filter-status" aria-label="Filter posts by category">
+          <button class="filter-bar__btn" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-bar__btn" type="button" data-filter="engineering" aria-pressed="false">Engineering</button>
+          <button class="filter-bar__btn" type="button" data-filter="product" aria-pressed="false">Product</button>
+          <button class="filter-bar__btn" type="button" data-filter="guides" aria-pressed="false">Guides</button>
+          <button class="filter-bar__btn" type="button" data-filter="company" aria-pressed="false">Company</button>
+        </div>
+        <p class="filter-status u-visually-hidden" id="filter-status" role="status"></p>
+        <ul class="post-grid" id="post-grid">
+          <li class="post-grid__item" data-category="engineering">
+            <article class="post-card">
+              <div class="post-card__media">
+                <img src="assets/img/covers/cover-2.svg" width="1600" height="1000" alt="" loading="lazy" decoding="async">
+              </div>
+              <p class="post-card__meta"><span class="badge">Engineering</span> <time datetime="2026-11-04">4 November 2026</time> · 8 min read</p>
+              <h3 class="post-card__title"><a class="card__link" href="blog-post.html">How we cut cold starts by 70%</a></h3>
+              <p class="post-card__excerpt">Snapshotting runtimes at build time means most requests never wait for a boot.</p>
+            </article>
+          </li>
+          <li class="post-grid__item" data-category="product">
+            <article class="post-card">
+              <div class="post-card__media">
+                <img src="assets/img/covers/cover-3.svg" width="1600" height="1000" alt="" loading="lazy" decoding="async">
+              </div>
+              <p class="post-card__meta"><span class="badge">Product</span> <time datetime="2026-10-21">21 October 2026</time> · 4 min read</p>
+              <h3 class="post-card__title"><a class="card__link" href="blog-post.html">Introducing team dashboards</a></h3>
+              <p class="post-card__excerpt">One timeline for every deploy across every project, built for the whole team.</p>
+            </article>
+          </li>
+          <li class="post-grid__item" data-category="guides">
+            <article class="post-card">
+              <div class="post-card__media">
+                <img src="assets/img/covers/cover-4.svg" width="1600" height="1000" alt="" loading="lazy" decoding="async">
+              </div>
+              <p class="post-card__meta"><span class="badge">Guides</span> <time datetime="2026-10-09">9 October 2026</time> · 11 min read</p>
+              <h3 class="post-card__title"><a class="card__link" href="blog-post.html">Zero-downtime database migrations</a></h3>
+              <p class="post-card__excerpt">A practical pattern for changing your schema while traffic keeps flowing.</p>
+            </article>
+          </li>
+          <li class="post-grid__item" data-category="company">
+            <article class="post-card">
+              <div class="post-card__media">
+                <img src="assets/img/covers/cover-5.svg" width="1600" height="1000" alt="" loading="lazy" decoding="async">
+              </div>
+              <p class="post-card__meta"><span class="badge">Company</span> <time datetime="2026-09-30">30 September 2026</time> · 3 min read</p>
+              <h3 class="post-card__title"><a class="card__link" href="blog-post.html">Vantail raises its Series B</a></h3>
+              <p class="post-card__excerpt">What the new funding means for customers, the free plan and our roadmap.</p>
+            </article>
+          </li>
+          <li class="post-grid__item" data-category="guides">
+            <article class="post-card">
+              <div class="post-card__media">
+                <img src="assets/img/covers/cover-6.svg" width="1600" height="1000" alt="" loading="lazy" decoding="async">
+              </div>
+              <p class="post-card__meta"><span class="badge">Guides</span> <time datetime="2026-09-18">18 September 2026</time> · 9 min read</p>
+              <h3 class="post-card__title"><a class="card__link" href="blog-post.html">Monorepos without the pain</a></h3>
+              <p class="post-card__excerpt">Split builds, shared caches and previews per app, all from one repository.</p>
+            </article>
+          </li>
+          <li class="post-grid__item" data-category="engineering">
+            <article class="post-card">
+              <div class="post-card__media">
+                <img src="assets/img/covers/cover-7.svg" width="1600" height="1000" alt="" loading="lazy" decoding="async">
+              </div>
+              <p class="post-card__meta"><span class="badge">Engineering</span> <time datetime="2026-09-02">2 September 2026</time> · 12 min read</p>
+              <h3 class="post-card__title"><a class="card__link" href="blog-post.html">Inside our edge cache</a></h3>
+              <p class="post-card__excerpt">How a deploy invalidates exactly the files that changed, in 34 regions at once.</p>
+            </article>
+          </li>
+        </ul>
+
+        <nav class="pagination" aria-label="Blog pages">
+          <ul>
+            <li><span aria-current="page">1</span></li>
+            <li><a href="blog.html?page=2">2</a></li>
+            <li><a href="blog.html?page=3">3</a></li>
+            <li><a href="blog.html?page=2">Older posts</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site footer ========================================================= -->
+  <footer class="site-footer">
+    <div class="container container--wide">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="logo" href="index.html">
+            <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 2 30 16 16 30 2 16Z" fill="currentColor"/><path class="logo__cut" d="M16 10.5 21.5 16 16 21.5 10.5 16Z"/></svg>
+            <span class="logo__text">vantail</span>
+          </a>
+          <p class="site-footer__about">The deploy tool that stays out of your way. Push code, get a URL, roll back in one command.</p>
+          <p class="status"><span class="status__dot" aria-hidden="true"></span> All systems normal</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Product</h2>
+            <ul class="site-footer__list">
+              <li><a href="features.html">Features</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="changelog.html">Changelog</a></li>
+              <li><a href="docs.html">Documentation</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Company</h2>
+            <ul class="site-footer__list">
+              <li><a href="about.html">About</a></li>
+              <li><a href="customers.html">Customers</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">More pages</h2>
+            <ul class="site-footer__list">
+              <li><a href="home-2.html">Home layout B</a></li>
+              <li><a href="sign-in.html">Sign in</a></li>
+              <li><a href="sign-up.html">Create account</a></li>
+              <li><a href="404.html">404 page</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">&copy; 2026 Vantail, Inc. All rights reserved.</p>
+        <p class="site-footer__copy">Made for teams who ship.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Live preview badge (demo copy only) -->
+  <div class="dsz-preview" aria-hidden="true">Live preview &middot; DesignStudioZero</div>
+</body>
+</html>
