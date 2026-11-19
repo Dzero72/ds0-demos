@@ -1,4 +1,4 @@
-// Forno Fiamma checkout · Version 1.0 · DesignStudioZero
+// Forno Fiamma checkout · Version 1.1 · DesignStudioZero
 // Plain JavaScript, no dependencies.
 // Nothing is charged or sent anywhere: connect your payment provider in placeOrder() below.
 
@@ -55,7 +55,8 @@ $$('input[name=fulfilment]').forEach(r => r.addEventListener('change', () => {
   state.fulfilment = r.value;
   $$('[data-show]').forEach(el => (el.hidden = el.dataset.show !== r.value));
   $('[data-eta]').textContent = CONFIG.eta[r.value];
-  renderTotals();
+  updateRail();
+renderTotals();
 }));
 
 $$('input[name=timing]').forEach(r => r.addEventListener('change', () => {
@@ -71,21 +72,79 @@ toggle.addEventListener('click', () => {
   $('#summary-body').hidden = !open;
 });
 
-/* ---------- Progress rail follows the scroll ---------- */
-if ('IntersectionObserver' in window) {
-  const steps = { delivery: $('[data-step=delivery]'), payment: $('[data-step=payment]') };
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.target.id !== 'payment') return;
-      const onPayment = e.isIntersecting || e.boundingClientRect.top < 0;
-      steps.delivery.className = onPayment ? 'done' : 'current';
-      steps.payment.className = onPayment ? 'current' : '';
-      steps.delivery.toggleAttribute('aria-current', !onPayment);
-      steps.payment.toggleAttribute('aria-current', onPayment);
-      $('.dot', steps.delivery).innerHTML = onPayment ? icon('check') : '2';
-    });
-  }, { rootMargin: '0px 0px -40% 0px' }).observe($('#payment'));
+/* ---------- Progress rail ----------
+   Delivery stays the current step until the visitor starts on payment:
+   they focus a payment field or button, or scroll the Fulfilment card
+   mostly out of view. Scrolling back up returns it to Delivery. */
+const railSteps = { delivery: $('[data-step=delivery]'), payment: $('[data-step=payment]') };
+let paymentStarted = false;
+function setRail(onPayment) {
+  railSteps.delivery.className = onPayment ? 'done' : 'current';
+  railSteps.payment.className = onPayment ? 'current' : '';
+  railSteps.delivery.toggleAttribute('aria-current', !onPayment);
+  railSteps.payment.toggleAttribute('aria-current', onPayment);
+  $('.dot', railSteps.delivery).innerHTML = onPayment ? icon('check') : '2';
 }
+function updateRail() {
+  const delivery = $('#delivery').getBoundingClientRect();
+  setRail(paymentStarted || delivery.bottom < innerHeight * 0.3);
+}
+$('#payment').addEventListener('focusin', () => { paymentStarted = true; updateRail(); });
+$('#delivery').addEventListener('focusin', () => { paymentStarted = false; updateRail(); });
+addEventListener('scroll', () => requestAnimationFrame(updateRail), { passive: true });
+
+/* ---------- Edit contact and change address ----------
+   Each Edit button opens the form that sits next to its details. Saving
+   writes the values back into the [data-f] elements; Cancel leaves them. */
+const status = $('[data-status]');
+const say = msg => { status.textContent = ''; setTimeout(() => (status.textContent = msg), 50); };
+
+const CHECKS = {
+  name: v => v.length >= 2 || 'Enter your name.',
+  phone: v => v.replace(/\D/g, '').length >= 7 || 'Enter a phone number the courier can call.',
+  street: v => v.length >= 3 || 'Enter the street and flat number.',
+  city: v => v.length >= 2 || 'Enter the town or city.',
+  postcode: v => v.length >= 3 || 'Enter the postcode.'
+};
+
+$$('[data-edit]').forEach(btn => {
+  const key = btn.dataset.edit;
+  const view = $(`[data-view="${key}"]`), form = $(`[data-form="${key}"]`);
+  const field = name => $(`[data-f="${name}"]`, view);
+  btn.hidden = false;      // the buttons only appear when JavaScript is running
+
+  const open = () => {
+    $$('input', form).forEach(i => { i.value = field(i.name).textContent.trim(); clearError(i); });
+    view.hidden = true; form.hidden = false; btn.setAttribute('aria-expanded', 'true');
+    $('input', form).focus();
+  };
+  const close = () => {
+    form.hidden = true; view.hidden = false; btn.setAttribute('aria-expanded', 'false'); btn.focus();
+  };
+
+  btn.addEventListener('click', open);
+  $('[data-cancel]', form).addEventListener('click', close);
+  form.addEventListener('keydown', e => { if (e.key === 'Escape') { e.stopPropagation(); close(); } });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let first = null;
+    $$('input', form).forEach(i => {
+      i.value = i.value.trim();
+      const ok = CHECKS[i.name] ? CHECKS[i.name](i.value) : true;
+      if (ok === true) clearError(i); else { setError(i, ok); first = first || i; }
+    });
+    if (first) return first.focus();
+    $$('input', form).forEach(i => (field(i.name).textContent = i.name === 'postcode' ? i.value.toUpperCase() : i.value));
+    if (key === 'address') $('[data-sep]', view).hidden = !field('details').textContent;
+    if (key === 'contact') {
+      const parts = field('name').textContent.split(/\s+/);
+      $('[data-initials]').textContent = (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+      f.name.placeholder = field('name').textContent.toUpperCase();
+    }
+    close();
+    say(key === 'contact' ? 'Contact details saved.' : 'Delivery address updated.');
+  });
+});
 
 /* ---------- Card fields ---------- */
 const f = { number: $('#cc-number'), exp: $('#cc-exp'), csc: $('#cc-csc'), name: $('#cc-name') };
@@ -125,11 +184,11 @@ function luhn(n) {
 
 function setError(input, msg) {
   input.setAttribute('aria-invalid', 'true');
-  $('#' + input.id + '-err').textContent = msg;
+  const err = $('#' + input.id + '-err'); if (err) err.textContent = msg;
 }
 function clearError(input) {
   input.removeAttribute('aria-invalid');
-  $('#' + input.id + '-err').textContent = '';
+  const err = $('#' + input.id + '-err'); if (err) err.textContent = '';
 }
 
 function validateCard() {
@@ -223,7 +282,8 @@ function closeSheet() {
   setTimeout(() => {
     sheetWrap.hidden = true;
     payBtn.disabled = false;
-    renderTotals();
+    updateRail();
+renderTotals();
     if (lastFocus) lastFocus.focus();
   }, 400);
 }
@@ -260,4 +320,5 @@ document.addEventListener('keydown', e => {
   }
 });
 
+updateRail();
 renderTotals();

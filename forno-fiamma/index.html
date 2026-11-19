@@ -45,7 +45,7 @@
   <a class="icon-btn" href="#" aria-label="Back to menu"><svg class="ic" aria-hidden="true"><use href="#i-arrow-left"/></svg></a>
   <p class="top-title">Checkout</p>
   <a class="icon-btn muted" href="#" aria-label="Order help"><svg class="ic" aria-hidden="true"><use href="#i-help"/></svg></a>
-  <span class="avatar" aria-hidden="true">MR</span>
+  <span class="avatar" data-initials aria-hidden="true">MR</span>
 </header>
 
 <main class="page">
@@ -66,15 +66,31 @@
       <li data-step="payment"><span class="dot">3</span>Payment</li>
     </ol>
 
-    <!-- Contact: already completed -->
-    <section class="card contact" aria-label="Contact details">
-      <span class="badge-icon ok"><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg></span>
-      <div class="grow">
-        <p class="overline">Guest contact <span class="tag ok">Verified</span></p>
-        <p class="strong">Matteo Rossi</p>
-        <p class="small">+44 7700 900123</p>
+    <!-- Contact: filled in at the previous step. Edit opens the form below it. -->
+    <section class="card contact" id="contact" aria-label="Contact details">
+      <div class="contact-row" data-view="contact">
+        <span class="badge-icon ok"><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg></span>
+        <div class="grow">
+          <p class="overline">Guest contact <span class="tag ok">Verified</span></p>
+          <p class="strong" data-f="name">Matteo Rossi</p>
+          <p class="small" data-f="phone">+44 7700 900123</p>
+        </div>
+        <button class="text-link underline" type="button" data-edit="contact" aria-controls="contact-form" aria-expanded="false" hidden>Edit<span class="sr"> contact details</span></button>
       </div>
-      <a class="text-link underline" href="#">Edit</a>
+      <form class="edit-form" id="contact-form" data-form="contact" novalidate hidden>
+        <p class="overline">Edit contact</p>
+        <div class="field">
+          <label class="field-label" for="c-name">Full name</label>
+          <input id="c-name" name="name" autocomplete="name" required aria-describedby="c-name-err">
+          <p class="err" id="c-name-err"></p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="c-phone">Mobile number <span class="hint">For courier updates</span></label>
+          <input id="c-phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="c-phone-err">
+          <p class="err" id="c-phone-err"></p>
+        </div>
+        <div class="form-actions"><button class="ghost-btn outline" type="button" data-cancel>Cancel</button><button class="save-btn" type="submit">Save</button></div>
+      </form>
     </section>
 
     <!-- Fulfilment -->
@@ -91,18 +107,45 @@
       </fieldset>
 
       <div class="panel" data-show="delivery">
-        <div class="panel-head">
-          <span class="strong-sm"><svg class="ic accent" aria-hidden="true"><use href="#i-pin"/></svg>Drop-off address</span>
-          <a class="text-link sm" href="#">Change</a>
+        <div data-view="address">
+          <div class="panel-head">
+            <span class="strong-sm"><svg class="ic accent" aria-hidden="true"><use href="#i-pin"/></svg>Drop-off address</span>
+            <button class="text-link sm" type="button" data-edit="address" aria-controls="address-form" aria-expanded="false" hidden>Change<span class="sr"> drop-off address</span></button>
+          </div>
+          <p class="strong" data-f="street">14 Kiln Yard, Flat 4B</p>
+          <p class="small"><span data-f="details">2nd floor · Buzz 04</span><span data-sep> · </span><b><span data-f="city">London</span> <span data-f="postcode">SE1 0AA</span></b></p>
         </div>
-        <p class="strong">14 Kiln Yard, Flat 4B</p>
-        <p class="small">2nd floor · Buzz 04 · <b>London SE1 0AA</b></p>
+        <form class="edit-form" id="address-form" data-form="address" novalidate hidden>
+          <p class="overline">Change address</p>
+          <div class="field">
+            <label class="field-label" for="a-street">Street and flat number</label>
+            <input id="a-street" name="street" autocomplete="address-line1" required aria-describedby="a-street-err">
+            <p class="err" id="a-street-err"></p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="a-details">Floor, buzzer or notes <span class="hint">Optional</span></label>
+            <input id="a-details" name="details" autocomplete="address-line2">
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label class="field-label" for="a-city">Town or city</label>
+              <input id="a-city" name="city" autocomplete="address-level2" required aria-describedby="a-city-err">
+              <p class="err" id="a-city-err"></p>
+            </div>
+            <div class="field">
+              <label class="field-label" for="a-postcode">Postcode</label>
+              <input id="a-postcode" name="postcode" class="caps" autocomplete="postal-code" required aria-describedby="a-postcode-err">
+              <p class="err" id="a-postcode-err"></p>
+            </div>
+          </div>
+          <div class="form-actions"><button class="ghost-btn outline" type="button" data-cancel>Cancel</button><button class="save-btn" type="submit">Use this address</button></div>
+        </form>
       </div>
 
       <div class="panel" data-show="pickup" hidden>
         <div class="panel-head">
           <span class="strong-sm"><svg class="ic accent" aria-hidden="true"><use href="#i-store"/></svg>Collect from</span>
-          <a class="text-link sm" href="#">Directions</a>
+          <a class="text-link sm" href="https://www.google.com/maps/search/?api=1&amp;query=2+Arch+Lane+London+SE1+0AB" target="_blank" rel="noopener">Directions<span class="sr"> (opens in a new tab)</span></a>
         </div>
         <p class="strong">Forno Fiamma, 2 Arch Lane</p>
         <p class="small">Ask at the pass · <b>London SE1 0AB</b></p>
@@ -296,6 +339,7 @@
   </div>
 </div>
 
+<p class="sr" data-status aria-live="polite"></p>
 <script src="script.js"></script>
 <style>.dsz-preview{position:fixed;right:12px;bottom:calc(170px + env(safe-area-inset-bottom));z-index:99999;background:#111;color:#fff;font:600 12px/1 system-ui,sans-serif;padding:9px 13px;border-radius:99px;opacity:.88;pointer-events:none;letter-spacing:.02em;box-shadow:0 2px 10px rgba(0,0,0,.3)}@media(min-width:60rem){.dsz-preview{bottom:12px}}</style><div class="dsz-preview" aria-hidden="true">Live preview &middot; DesignStudioZero</div>
 
